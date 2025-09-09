@@ -92,7 +92,9 @@ const showPlantsByCategory = (plants)=>{
             <button class="btn border border-green-400 text-sky-500 mt-3">${plant.category}</button>
             <p class="text-green-600 font-bold"><span class="font-bold">৳</span> ${plant.price}</p>
            </div>
-            <button onclick="addToCart('${plant.name}', '${plant.price}')" class="btn btn-wide bg-green-500 text-white rounded-xl mt-5 ">Add to Cart</button>
+            <div class="flex justify-center items-center">
+                <button onclick="addToCart('${plant.name}', '${plant.price}')" class="btn btn-wide bg-green-500 text-white rounded-xl mt-5 ">Add to Cart</button>
+            </div>
          </div>
         </div>
 
@@ -138,7 +140,7 @@ let cartItems =[]
 let totalPrice = 0
 
  function addToCart(name, price){
-    alert("iam from js")
+    alert(`${name} has been added to the cart`)
     console.log(name, price);
     cartItems.push({name, price})
     totalPrice += Number(price)
