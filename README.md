@@ -1,21 +1,21 @@
 1. What is the difference between var, let, and const?
-Ans: The main differences between var, let, and const in JavaScript relate to their scope, hoisting, reassignment, and re-declaration capabilities.
+* Ans: The main differences between var, let, and const in JavaScript relate to their scope, hoisting, reassignment, and re-declaration      capabilities.
 var is function-scoped, can be re-declared and reassigned, and is initialized with undefined but is subject to hoisting.
 let variables can be reassigned after initialization.
 const variables cannot, though the properties of an object or array declared with const can still be modified. 
 
 2. What is the difference between map(), forEach(), and filter()?
-Ans: The methods map(), forEach(), and filter() are all array iteration methods in JavaScript, but they serve different purposes and have distinct return values.
+* Ans: The methods map(), forEach(), and filter() are all array iteration methods in JavaScript, but they serve different purposes and have distinct return values.
 
-# forEach():
+* forEach():
 Return Value: undefined. forEach() does not return a new array or any value; it simply iterates.
 Chainability: Not chainable with other array methods because it returns undefined.
 
-# map():
+* map():
 Return Value: A new array containing the results of calling the provided function on every element. The original array remains unchanged.
 Chainability: Highly chainable, as it returns a new array, allowing for subsequent array methods like filter() or reduce() to be applied.
 
-# filter():
+* filter():
 Return Value: A new array containing only the elements for which the provided function returned true. If no elements satisfy the condition, an empty array is returned. The original array remains unchanged.
 Chainability: Highly chainable, as it returns a new array, allowing for subsequent array methods to be applied.
 
