@@ -21,7 +21,6 @@ allPlantTrees.addEventListener("click", (e)=>{
 const showAllPlantsTree = (allPlants) =>{
     allPlants.forEach(plant =>{
         console.log(plant.category);
-        allPlantTrees.innerHTML +=``
     })
 }
 
@@ -92,7 +91,7 @@ const showPlantsByCategory = (plants)=>{
             <button class="btn border border-green-400 text-sky-500 mt-3">${plant.category}</button>
             <p class="text-green-600 font-bold"><span class="font-bold">৳</span> ${plant.price}</p>
            </div>
-            <button class="btn btn-wide bg-green-500 text-white rounded-xl mt-5 ">Add to Cart</button>
+            <button onclick="addToCart('${plant.name}', '${plant.price}')" class="btn btn-wide bg-green-500 text-white rounded-xl mt-5 ">Add to Cart</button>
          </div>
         </div>
 
@@ -133,6 +132,48 @@ const showLoading =()=>{
           </div>
     `
 }
+
+let cartItems =[]
+let totalPrice = 0
+
+ function addToCart(name, price){
+    console.log(name, price);
+    cartItems.push({name, price})
+    totalPrice += Number(price)
+    console.log(totalPrice);
+    cartUpdate ()
+ }
+
+
+ function cartUpdate () {
+    const cartContainer = document.getElementById("cartContainer")
+    const totalPrices = document.getElementById("totalPrice")
+
+    totalPrices.innerHTML = ""
+    cartContainer.innerHTML = ""
+
+    cartItems.forEach((item, index)=>{
+        const div = document.createElement("div")
+        div.innerHTML = `
+        <div class="flex justify-between p-2 bg-[#dcfce7]">
+        <span>${item.name} - ৳  ${item.price}</span>
+        <button class="text-red-500 font-bold" onclick="removeItems(${index})"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        `
+        cartContainer.appendChild(div)
+
+    })
+    totalPrices.innerHTML = `
+    <p class="text-center font-semibold">Total: ৳ ${totalPrice}</p>
+    `
+ }
+
+ function removeItems(index){
+    totalPrice -= cartItems [index].price
+    cartItems.splice(index,1)
+    cartUpdate()
+ }
+
 
 loadPlantCategory()
 loadPlantsByCategory("1")
