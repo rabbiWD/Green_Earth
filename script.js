@@ -3,6 +3,7 @@ const plantsContainer =document.getElementById("plantsContainer")
 const allPlantTrees = document.getElementById("allPlantTrees")
 
 allPlantTrees.addEventListener("click", (e)=>{
+    showLoading()
     console.log(e.target);
     fetch("https://openapi.programming-hero.com/api/plants")
     .then(res=>res.json())
@@ -129,7 +130,7 @@ const showLoading =()=>{
     <div class="flex justify-center items-center mx-auto">
     <span class="loading loading-dots loading-xl"></span>
     </div>
-          </div>
+        </div>
     `
 }
 
@@ -137,6 +138,7 @@ let cartItems =[]
 let totalPrice = 0
 
  function addToCart(name, price){
+    alert("iam from js")
     console.log(name, price);
     cartItems.push({name, price})
     totalPrice += Number(price)
@@ -155,7 +157,7 @@ let totalPrice = 0
     cartItems.forEach((item, index)=>{
         const div = document.createElement("div")
         div.innerHTML = `
-        <div class="flex justify-between p-2 bg-[#dcfce7]">
+        <div class="flex gap-2 mb-2 justify-between p-2 bg-[#dcfce7]">
         <span>${item.name} - ৳  ${item.price}</span>
         <button class="text-red-500 font-bold" onclick="removeItems(${index})"><i class="fa-solid fa-xmark"></i></button>
         </div>
@@ -164,7 +166,7 @@ let totalPrice = 0
 
     })
     totalPrices.innerHTML = `
-    <p class="text-center font-semibold">Total: ৳ ${totalPrice}</p>
+    <p class="mr-2 font-semibold text-right">Total: ৳ ${totalPrice}</p>
     `
  }
 
