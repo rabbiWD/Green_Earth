@@ -2,28 +2,6 @@ const categoryContainer = document.getElementById("categoryContainer")
 const plantsContainer =document.getElementById("plantsContainer")
 const allPlantTrees = document.getElementById("allPlantTrees")
 
-allPlantTrees.addEventListener("click", (e)=>{
-    showLoading()
-    console.log(e.target);
-    fetch("https://openapi.programming-hero.com/api/plants")
-    .then(res=>res.json())
-    .then(data=>{
-        showPlantsByCategory(data.plants)
-        // console.log(data.plants);
-        const plantsTree = data.plants
-        // console.log(plantsTree);
-        showAllPlantsTree(plantsTree)
-    })
-    .catch(err=>{
-        console.log(err);
-    })
-})
-
-const showAllPlantsTree = (allPlants) =>{
-    allPlants.forEach(plant =>{
-        console.log(plant.category);
-    })
-}
 
 const loadPlantCategory =()=>{
 fetch("https://openapi.programming-hero.com/api/categories")
@@ -65,7 +43,7 @@ const showPlantCategory = (categories)=>{
 
 const loadPlantsByCategory = (plantsId)=>{
     console.log(plantsId);
-    fetch(`https://openapi.programming-hero.com/api/category/${plantsId}`)
+    fetch(plantsId?`https://openapi.programming-hero.com/api/category/${plantsId}`: 'https://openapi.programming-hero.com/api/plants')
     .then(res => res.json())
     .then(data=>{
         // console.log(data.plants);
@@ -180,4 +158,4 @@ let totalPrice = 0
 
 
 loadPlantCategory()
-loadPlantsByCategory("1")
+loadPlantsByCategory()
